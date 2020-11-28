@@ -9,7 +9,7 @@ function HomePage() {
   const [username, setUsername] = useState();
   const [profileImage, setProfileImage] = useState();
   const [imageUrl, setImageUrl] = useState(
-    "https://github.com/OlgaKoplik/CodePen/blob/master/profile.jpg?raw=true"
+    "https://firebasestorage.googleapis.com/v0/b/heythere-me.appspot.com/o/profile%20(2).png?alt=media&token=47939f5f-d3e8-4cfa-ac38-75b65d8e007e"
   );
   const [email, setEmail] = useState();
   const [bio, setBio] = useState();
@@ -22,7 +22,7 @@ function HomePage() {
   useEffect(() => {
     if (
       imageUrl !=
-      "https://github.com/OlgaKoplik/CodePen/blob/master/profile.jpg?raw=true"
+      "https://firebasestorage.googleapis.com/v0/b/heythere-me.appspot.com/o/profile%20(2).png?alt=media&token=47939f5f-d3e8-4cfa-ac38-75b65d8e007e"
     ) {
       Swal.fire({
         title: "Success! You can share the below link",
