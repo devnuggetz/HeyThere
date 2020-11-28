@@ -39,8 +39,10 @@ export default function PageDisplay(props) {
   console.log(users);
   console.log(displayUser);
   return (
-    <div>
-      <h2>heyThere, Create your virtual Identity Today</h2>
+    <div className="pageDisplay">
+      <h2 className="homePage__heading">
+        heyThere, Create your virtual Identity Today
+      </h2>
       <div className="right-panel-active container" container id="container">
         <div className="form-container sign-up-container">
           <form action="#">
@@ -51,7 +53,7 @@ export default function PageDisplay(props) {
             )}
           </form>
         </div>
-        <div className="overlay-container">
+        <div className="overlay-container leftOverlayContainer">
           <div className="overlay">
             <div className="overlay-panel overlay-left">
               <h1>HeyThere</h1>

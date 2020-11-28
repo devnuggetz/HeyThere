@@ -297,3 +297,34 @@ input:focus {
 input::placeholder {
   color: #bebebe;
 }
+
+@media only screen and (max-width: 600px) {
+  .leftOverlayContainer {
+    display: none;
+  }
+  .rightOverlayContainer {
+    display: none;
+  }
+  .container {
+    width: auto;
+    margin: 10px;
+    padding-top: 10px;
+  }
+  .sign-up-container {
+    position: relative;
+    left: -25%;
+    z-index: 200px;
+  }
+  .userCard__heading {
+    font-size: 1.6em;
+    margin: 6px;
+    padding-bottom: 4px;
+  }
+  .sign-in-container {
+    /* position: relative;
+    right: -25%;
+    z-index: 200px; */
+    position: absolute;
+    width: 100%;
+  }
+}

@@ -75,7 +75,9 @@ function HomePage() {
 
   return (
     <div>
-      <h2>heyThere, Create your virtual Identity Today</h2>
+      <h2 className="homePage__heading">
+        heyThere, Create your virtual Identity Today
+      </h2>
       <div className="container" id="container">
         <div className="form-container sign-up-container">
           <form action="#">
@@ -132,7 +134,7 @@ function HomePage() {
             <button onClick={handleClick}>Submit</button>
           </form>
         </div>
-        <div className="overlay-container">
+        <div className="overlay-container rightOverlayContainer">
           <div className="overlay">
             <div className="overlay-panel overlay-left">
               <h1>HeyThere</h1>
