@@ -1,4 +1,4 @@
-import * as firebase from "firebase/app";
+import app from "firebase/app";
 import "firebase/storage";
 import "firebase/firestore";
 // Your web app's Firebase configuration
@@ -14,10 +14,9 @@ var firebaseConfig = {
   measurementId: "G-NNJBS1H41M",
 };
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
+app.initializeApp(firebaseConfig);
 
-const projectStorage = firebase.storage();
-const projectFirestore = firebase.firestore();
+const projectStorage = app.storage();
+const projectFirestore = app.firestore();
 
 export { projectFirestore, projectStorage };

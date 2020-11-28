@@ -12,13 +12,14 @@ const useStorage = (profileImage) => {
       "state_changed",
       (snap) => {
         let percentage = (snap.bytesTransferred / snap.totalBytes) * 100;
+        // let percentage = (snap.bytesTransferred / snap.totalBytes) * 100;
         setProgress(percentage);
       },
       (err) => {
         setError(err);
       },
       async () => {
-        const url = await storageRef.getDownloadUrl();
+        const url = await storageRef.getDownloadURL();
         setUrl(url);
       }
     );

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ProgressBar from "./ProgressBar";
 
 export default function CreatePage() {
   const [name, setName] = useState();
@@ -45,6 +46,12 @@ export default function CreatePage() {
         <div className="profilePhoto">
           {error && <div>{error} </div>}
           {profileImage && <div>{profileImage.name} </div>}
+          {profileImage && (
+            <ProgressBar
+              profileImage={profileImage}
+              setProfileImage={setProfileImage}
+            />
+          )}
         </div>
         <input
           type="text"
