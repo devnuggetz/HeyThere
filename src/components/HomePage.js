@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Temp3 from "./Temp3";
+import UserCard from "./UserCard";
 import Swal from "sweetalert2";
 import ProgressBar from "./ProgressBar";
 import { Link } from "react-router-dom";
@@ -79,7 +79,7 @@ function HomePage() {
       <div className="container" id="container">
         <div className="form-container sign-up-container">
           <form action="#">
-            <Temp3 />
+            <UserCard />
           </form>
         </div>
         <div className="form-container sign-in-container">

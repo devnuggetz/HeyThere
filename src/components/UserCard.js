@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 
-function Temp3() {
-  const [imageUrl, setImageUrl] = useState(
-    "https://github.com/OlgaKoplik/CodePen/blob/master/profile.jpg?raw=true"
-  );
+function UserCard({ displayUser }) {
+  const [imageUrl, setImageUrl] = useState(displayUser[0].url);
+  console.log(displayUser);
   return (
     <div>
       <h1>HeyThere virtual identity</h1>
@@ -20,4 +19,4 @@ function Temp3() {
   );
 }
 
-export default Temp3;
+export default UserCard;

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { projectFirestore } from "../firebase/config";
 import useFirestore from "../hooks/useFirestore";
-import Temp3 from "./Temp3";
+import UserCard from "./UserCard";
 import Swal from "sweetalert2";
 
 export default function PageDisplay(props) {
@@ -44,7 +44,11 @@ export default function PageDisplay(props) {
       <div className="right-panel-active container" container id="container">
         <div className="form-container sign-up-container">
           <form action="#">
-            <Temp3 />
+            {displayUser ? (
+              <UserCard displayUser={displayUser} />
+            ) : (
+              <div>If the link is correct your user will appear here</div>
+            )}
           </form>
         </div>
         <div className="overlay-container">
