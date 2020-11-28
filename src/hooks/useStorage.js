@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
-import { projectStorage } from "../firebase/config";
+import { projectFirestore, projectStorage } from "../firebase/config";
 
-const useStorage = (profileImage) => {
+const useStorage = ({ profileImage, name, username, email, bio }) => {
   const [progress, setProgress] = useState(0);
   const [error, setError] = useState(null);
   const [url, setUrl] = useState(null);
 
   useEffect(() => {
     const storageRef = projectStorage.ref(profileImage.name);
+    const collectionRef = projectFirestore.collection("users");
     storageRef.put(profileImage).on(
       "state_changed",
       (snap) => {
@@ -20,6 +21,13 @@ const useStorage = (profileImage) => {
       },
       async () => {
         const url = await storageRef.getDownloadURL();
+        collectionRef.add({
+          url,
+          name: { name },
+          username: { username },
+          email: { email },
+          bio: { bio },
+        });
         setUrl(url);
       }
     );

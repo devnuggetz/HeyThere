@@ -50,6 +50,10 @@ export default function CreatePage() {
             <ProgressBar
               profileImage={profileImage}
               setProfileImage={setProfileImage}
+              name={name}
+              username={username}
+              bio={bio}
+              email={email}
             />
           )}
         </div>
