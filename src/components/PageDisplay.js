@@ -1,13 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import useFirestore from "../hooks/useFirestore";
 import Temp3 from "./Temp3";
 
-export default function PageDisplay() {
-  const { users } = useFirestore("users");
-  const [userQuery, setUserQuery] = useState();
+export default function PageDisplay(props) {
+  // const { users } = useFirestore("users");
+  const [users, setUser] = useState();
+  const [userQuery, setUserQuery] = useState(props.match.params.username);
   const [displayUser, setDisplayUser] = useState();
   const handleChange = (e) => {
     setUserQuery(e.target.value);
+  };
+  const dataFetch = async () => {
+    let temp = await useFirestore("users");
+    setUser(temp);
+    handleClick();
   };
   const handleClick = () => {
     let temp = users.filter((user) =>
@@ -15,8 +22,11 @@ export default function PageDisplay() {
     );
     setDisplayUser(temp);
   };
+  useEffect(() => {
+    dataFetch();
+  }, []);
+
   console.log(users);
-  console.log(displayUser);
   return (
     <div>
       <h2>heyThere, Create your virtual Identity Today</h2>
@@ -26,56 +36,6 @@ export default function PageDisplay() {
             <Temp3 />
           </form>
         </div>
-        {/* <div className="form-container sign-in-container">
-          <form action="#">
-            <h1>Create HeyThere Id</h1>
-            <label htmlFor="photo-upload" className="custom-file-upload fas">
-              <div className="img-wrap img-upload">
-                <img for="photo-upload" src={imageUrl} />
-              </div>
-              <input id="photo-upload" type="file" onChange={handleImage} />
-            </label>
-            <div className="profilePhoto">
-              {error && <div>{error} </div>}
-              {allEntry && (
-                <ProgressBar
-                  profileImage={profileImage}
-                  setProfileImage={setProfileImage}
-                  setImageUrl={setImageUrl}
-                  name={name}
-                  username={username}
-                  bio={bio}
-                  email={email}
-                />
-              )}
-            </div>
-            <input
-              type="text"
-              placeholder="name"
-              value={name}
-              onChange={handleName}
-            />
-            <input
-              type="text"
-              placeholder="username"
-              value={username}
-              onChange={handleUsername}
-            />
-            <input
-              type="text"
-              placeholder="email"
-              value={email}
-              onChange={handleEmail}
-            />
-            <input
-              type="text"
-              placeholder="Bio"
-              value={bio}
-              onChange={handleBio}
-            />
-            <button onClick={handleClick}>Submit</button>
-          </form>
-        </div> */}
         <div className="overlay-container">
           <div className="overlay">
             <div className="overlay-panel overlay-left">
@@ -84,19 +44,9 @@ export default function PageDisplay() {
                 To create your own HeyThere virtual identity click on create
               </p>
               <button class="ghost" id="signIn">
-                Create
+                <Link to="/">Create</Link>
               </button>
             </div>
-            {/* <div className="overlay-panel overlay-right">
-              <h1>Want to find someone?</h1>
-              <p>
-                Enter username if you have any and find their virtual identity
-                now
-              </p>
-              <button class="ghost" id="signUp" onClick={handleSet}>
-                find
-              </button>
-            </div> */}
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Temp3 from "./Temp3";
 import Swal from "sweetalert2";
 import ProgressBar from "./ProgressBar";
+import { Link } from "react-router-dom";
 
 function HomePage() {
   const [name, setName] = useState();
@@ -149,7 +150,7 @@ function HomePage() {
                 now
               </p>
               <button class="ghost" id="signUp" onClick={handleSet}>
-                find
+                <Link to="/PageDisplay">find</Link>
               </button>
             </div>
           </div>
