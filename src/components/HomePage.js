@@ -26,7 +26,7 @@ function HomePage() {
     ) {
       Swal.fire({
         title: "Success! You can share the below link",
-        text: "abs",
+        text: `heyThere-me.web.app/${username}`,
         icon: "success",
         confirmButtonText: "yay",
       }).then((result) => {
@@ -82,9 +82,15 @@ function HomePage() {
     setBio(e.target.value);
   };
   const handleSet = () => {
-    setCheck(!check);
+    if (!search) {
+      Swal.fire({
+        title: "No No NO",
+        text: "Please enter all the input field",
+        icon: "warning",
+        confirmButtonText: "Okay",
+      });
+    }
   };
-  var classes = !check ? "container" : "right-panel-active container";
 
   return (
     <div>
