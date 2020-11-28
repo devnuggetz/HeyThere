@@ -17,6 +17,7 @@ function HomePage() {
   const types = ["image/png", "image/jpeg", "image/jpg"];
   const [allEntry, setAllEntry] = useState(false);
   const [check, setCheck] = useState(false);
+  const [search, setSearch] = useState();
 
   useEffect(() => {
     if (
@@ -46,6 +47,9 @@ function HomePage() {
     e.preventDefault();
   };
 
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  };
   const handleImage = (e) => {
     if (e.target.files)
       if (types.includes(e.target.files[0].type)) {
@@ -151,8 +155,14 @@ function HomePage() {
                 Enter username if you have any and find their virtual identity
                 now
               </p>
+              <input
+                type="text"
+                placeholder="Enter Username"
+                value={search}
+                onChange={handleSearch}
+              />
               <button class="ghost" id="signUp" onClick={handleSet}>
-                <Link to="/PageDisplay">find</Link>
+                <Link to={`/${search}`}>find</Link>
               </button>
             </div>
           </div>
