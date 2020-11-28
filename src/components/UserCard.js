@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./UserCard.css";
 
 function UserCard({ displayUser }) {
   const [imageUrl, setImageUrl] = useState();
@@ -9,17 +10,19 @@ function UserCard({ displayUser }) {
   }, []);
   console.log(displayUser);
   return (
-    <div>
+    <div className="userCard">
       <h1 className="userCard__heading">HeyThere identity</h1>
-      <label htmlFor="photo-upload" className="custom-file-upload fas">
+      <label className="custom-file-upload fas imageDisplay">
         <div className="img-wrap img-upload">
           <img for="photo-upload" src={imageUrl} />
         </div>
       </label>
       <h2>Shuvam Kumar</h2>
-      <h4>Username</h4>
-      <h3>bio</h3>
-      <a>email</a>
+      <p>Username</p>
+      <p>Email</p>
+      <div className="userCard__bio">
+        <p>bio</p>
+      </div>
     </div>
   );
 }
