@@ -27,7 +27,7 @@ function HomePage() {
       Swal.fire({
         title: "Success! You can share the below link",
         text: "abs",
-        icon: "warning",
+        icon: "success",
         confirmButtonText: "yay",
       }).then((result) => {
         if (result.value) {
@@ -43,8 +43,17 @@ function HomePage() {
     }
   }, [imageUrl]);
   const handleClick = (e) => {
-    setAllEntry(true);
-    e.preventDefault();
+    if (name && bio && imageUrl && email && username) {
+      setAllEntry(true);
+      e.preventDefault();
+    } else {
+      Swal.fire({
+        title: "No No NO",
+        text: "Please enter all the input field",
+        icon: "warning",
+        confirmButtonText: "Okay",
+      });
+    }
   };
 
   const handleSearch = (e) => {
@@ -95,7 +104,12 @@ function HomePage() {
               <div className="img-wrap img-upload">
                 <img for="photo-upload" src={imageUrl} />
               </div>
-              <input id="photo-upload" type="file" onChange={handleImage} />
+              <input
+                id="photo-upload"
+                type="file"
+                onChange={handleImage}
+                required
+              />
             </label>
             <div className="profilePhoto">
               {error && <div>{error} </div>}
@@ -116,24 +130,28 @@ function HomePage() {
               placeholder="name"
               value={name}
               onChange={handleName}
+              required
             />
             <input
               type="text"
               placeholder="username"
               value={username}
               onChange={handleUsername}
+              required
             />
             <input
               type="text"
               placeholder="email"
               value={email}
               onChange={handleEmail}
+              required
             />
             <input
               type="text"
               placeholder="Bio"
               value={bio}
               onChange={handleBio}
+              required
             />
             <button onClick={handleClick}>Submit</button>
           </form>
