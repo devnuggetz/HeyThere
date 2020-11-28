@@ -5,6 +5,7 @@ const useStorage = ({ profileImage, name, username, email, bio }) => {
   const [progress, setProgress] = useState(0);
   const [error, setError] = useState(null);
   const [url, setUrl] = useState(null);
+  const [dummyName, setDummyName] = useState("");
 
   useEffect(() => {
     const storageRef = projectStorage.ref(profileImage.name);

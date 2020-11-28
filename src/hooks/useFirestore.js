@@ -14,5 +14,7 @@ const useFirestore = (collection) => {
     return () => unsub();
   }, [collection]);
 
-  return { user };
+  return { users };
 };
+
+export default useFirestore;

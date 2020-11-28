@@ -19,7 +19,7 @@ export default function ProgressBar({
   });
   useEffect(() => {
     if (url) {
-      setProfileImage(null);
+      console.log(url);
     }
   }, [url, setProfileImage]);
   return <div className="progressBar" style={{ width: progress + "%" }}></div>;

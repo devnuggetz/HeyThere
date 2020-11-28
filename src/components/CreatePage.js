@@ -9,9 +9,10 @@ export default function CreatePage() {
   const [bio, setBio] = useState();
   const [error, setError] = useState(null);
   const types = ["image/png", "image/jpeg", "image/jpg"];
+  const [allEntry, setAllEntry] = useState(false);
 
   const handleClick = (e) => {
-    console.log(name, username, bio, profileImage, email);
+    setAllEntry(true);
     e.preventDefault();
   };
 
@@ -46,7 +47,7 @@ export default function CreatePage() {
         <div className="profilePhoto">
           {error && <div>{error} </div>}
           {profileImage && <div>{profileImage.name} </div>}
-          {profileImage && (
+          {allEntry && (
             <ProgressBar
               profileImage={profileImage}
               setProfileImage={setProfileImage}
