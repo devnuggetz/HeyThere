@@ -1,32 +1,43 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { projectFirestore } from "../firebase/config";
 import useFirestore from "../hooks/useFirestore";
 import Temp3 from "./Temp3";
+import Swal from "sweetalert2";
 
 export default function PageDisplay(props) {
   // const { users } = useFirestore("users");
-  const [users, setUser] = useState();
+  const [users, setUsers] = useState([]);
   const [userQuery, setUserQuery] = useState(props.match.params.username);
   const [displayUser, setDisplayUser] = useState();
   const handleChange = (e) => {
     setUserQuery(e.target.value);
   };
-  const dataFetch = async () => {
-    let temp = await useFirestore("users");
-    setUser(temp);
-    handleClick();
-  };
+  // const dataFetch = async () => {
+  //   let temp = await useFirestore("users");
+  //   setUser(temp);
+  //   handleClick();
+  // };
   const handleClick = () => {
-    let temp = users.filter((user) =>
-      user.username.username.includes(userQuery)
+    setDisplayUser(
+      users.filter((user) => user.username.username.includes(userQuery))
     );
-    setDisplayUser(temp);
   };
+
   useEffect(() => {
-    dataFetch();
-  }, []);
+    if (users.length == 0) {
+      projectFirestore.collection("users").onSnapshot((snap) => {
+        let users = [];
+        snap.forEach((user) => {
+          users.push({ ...user.data(), id: user.id });
+        });
+        setUsers(users);
+      });
+    } else handleClick();
+  }, [users]);
 
   console.log(users);
+  console.log(displayUser);
   return (
     <div>
       <h2>heyThere, Create your virtual Identity Today</h2>
