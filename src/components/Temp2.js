@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Temp3 from "./Temp3";
+import Swal from "sweetalert2";
+import ProgressBar from "./ProgressBar";
 
 function Temp2() {
   const [name, setName] = useState();
@@ -15,6 +17,29 @@ function Temp2() {
   const [allEntry, setAllEntry] = useState(false);
   const [check, setCheck] = useState(false);
 
+  useEffect(() => {
+    if (
+      imageUrl !=
+      "https://github.com/OlgaKoplik/CodePen/blob/master/profile.jpg?raw=true"
+    ) {
+      Swal.fire({
+        title: "Success! You can share the below link",
+        text: "abs",
+        icon: "warning",
+        confirmButtonText: "yay",
+      }).then((result) => {
+        if (result.value) {
+          setImageUrl(
+            "https://github.com/OlgaKoplik/CodePen/blob/master/profile.jpg?raw=true"
+          );
+          setName("");
+          setEmail("");
+          setBio("");
+          setUsername("");
+        }
+      });
+    }
+  }, [imageUrl]);
   const handleClick = (e) => {
     setAllEntry(true);
     e.preventDefault();
@@ -45,7 +70,7 @@ function Temp2() {
   const handleSet = () => {
     setCheck(!check);
   };
-  var classes = check ? "container" : "right-panel-active container";
+  var classes = !check ? "container" : "right-panel-active container";
 
   return (
     <div>
@@ -65,6 +90,20 @@ function Temp2() {
               </div>
               <input id="photo-upload" type="file" onChange={handleImage} />
             </label>
+            <div className="profilePhoto">
+              {error && <div>{error} </div>}
+              {allEntry && (
+                <ProgressBar
+                  profileImage={profileImage}
+                  setProfileImage={setProfileImage}
+                  setImageUrl={setImageUrl}
+                  name={name}
+                  username={username}
+                  bio={bio}
+                  email={email}
+                />
+              )}
+            </div>
             <input
               type="text"
               placeholder="name"

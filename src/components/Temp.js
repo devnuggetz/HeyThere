@@ -58,7 +58,7 @@ export default function CreatePage() {
             <ProgressBar
               profileImage={profileImage}
               setProfileImage={setProfileImage}
-              setImageUrl={setImageUrl}
+              setImageUrl={setIma}
               name={name}
               username={username}
               bio={bio}
