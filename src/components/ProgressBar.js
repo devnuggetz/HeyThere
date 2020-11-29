@@ -9,6 +9,7 @@ export default function ProgressBar({
   username,
   email,
   bio,
+  setImageUrl,
 }) {
   const { url, progress } = useStorage({
     profileImage,
@@ -20,6 +21,7 @@ export default function ProgressBar({
   useEffect(() => {
     if (url) {
       console.log(url);
+      setImageUrl(url);
     }
   }, [url, setProfileImage]);
   return <div className="progressBar" style={{ width: progress + "%" }}></div>;

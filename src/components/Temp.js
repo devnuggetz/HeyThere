@@ -6,6 +6,9 @@ export default function CreatePage() {
   const [name, setName] = useState();
   const [username, setUsername] = useState();
   const [profileImage, setProfileImage] = useState();
+  const [imageUrl, setImageUrl] = useState(
+    "https://github.com/OlgaKoplik/CodePen/blob/master/profile.jpg?raw=true"
+  );
   const [email, setEmail] = useState();
   const [bio, setBio] = useState();
   const [error, setError] = useState(null);
@@ -45,10 +48,7 @@ export default function CreatePage() {
       <form className="createPage__form">
         <label htmlFor="photo-upload" className="custom-file-upload fas">
           <div className="img-wrap img-upload">
-            <img
-              for="photo-upload"
-              src="https://github.com/OlgaKoplik/CodePen/blob/master/profile.jpg?raw=true"
-            />
+            <img for="photo-upload" src={imageUrl} />
           </div>
           <input id="photo-upload" type="file" onChange={handleImage} />
         </label>
@@ -58,6 +58,7 @@ export default function CreatePage() {
             <ProgressBar
               profileImage={profileImage}
               setProfileImage={setProfileImage}
+              setImageUrl={setImageUrl}
               name={name}
               username={username}
               bio={bio}
