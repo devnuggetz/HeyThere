@@ -3,6 +3,7 @@ import "./App.css";
 import PageDisplay from "./components/PageDisplay";
 import Temp from "./components/Temp";
 import Header from "./components/Header";
+import Temp2 from "./components/Temp2";
 
 function App() {
   return (
@@ -10,8 +11,9 @@ function App() {
       {/* <h2>Hey There</h2>
       <CreatePage />
       <PageDisplay /> */}
-      <Header />
-      <Temp />
+      {/* <Header />
+      <Temp /> */}
+      <Temp2 />
     </div>
   );
 }
